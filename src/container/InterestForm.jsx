@@ -9,6 +9,21 @@ export const InterestForm = () => {
   const { pageNo } = useParams();
   const getUserName = () => faker.person.fullName();
   const [nameArray, setNameArray] = useState([]);
+  const [selected, setSelected] = useState([]);
+  console.log(selected);
+
+  const modifySelection = (title) => {
+    setSelected((oldPrev) => {
+      const prev = oldPrev.slice();
+      const index = prev.indexOf(title);
+      if (index !== -1) {
+        prev.splice(index, 1);
+      } else {
+        prev.push(title);
+      }
+      return prev;
+    });
+  };
 
   useEffect(() => {
     const newNames = [];
@@ -35,7 +50,11 @@ export const InterestForm = () => {
         <br />
         {nameArray.slice(pageNo - 1, pageNo - 1 + 6).map((name) => (
           <Fragment key={nanoid()}>
-            <CustomCheckbox text={name} />
+            <CustomCheckbox
+              text={name}
+              checked={selected.includes(name)}
+              modifySelection={modifySelection}
+            />
           </Fragment>
         ))}
         <br />

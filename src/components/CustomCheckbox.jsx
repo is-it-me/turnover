@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const CustomCheckbox = ({ text }) => {
+const CustomCheckbox = ({ text, checked, modifySelection }) => {
   return (
     <div
       style={{
@@ -8,7 +8,12 @@ const CustomCheckbox = ({ text }) => {
         paddingBottom: "10px",
       }}
     >
-      <input style={{ width: "20px", height: "20px" }} type="checkbox" />
+      <input
+        style={{ width: "20px", height: "20px" }}
+        type="checkbox"
+        checked={checked}
+        onClick={() => modifySelection(text)}
+      />
       <label style={{ paddingLeft: "20px", verticalAlign: "super" }}>
         {text}
       </label>

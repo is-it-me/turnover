@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
+import { useContext } from "react";
+import { LoginContext } from "../context/LoginContextProvider";
 
 export const LoginForm = () => {
+  const navigate = useNavigate();
+  const { setIsLoginState } = useContext(LoginContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setIsLoginState(true);
+    navigate("/interests/1");
+  };
+
   return (
     <div>
       <h1>Login</h1>
@@ -21,9 +31,7 @@ export const LoginForm = () => {
             flexDirection: "column",
             width: "80%",
           }}
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
+          onSubmit={handleLogin}
         >
           <CustomInput
             label={"Email"}

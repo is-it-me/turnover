@@ -1,8 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
 
 export const SignUpForm = () => {
+  const navigate = useNavigate();
+
+  const handleAccountCreate = () => {
+    navigate("/");
+  };
+
   return (
     <div>
       <h1>Create Your Account</h1>
@@ -18,9 +24,7 @@ export const SignUpForm = () => {
             flexDirection: "column",
             width: "80%",
           }}
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
+          onSubmit={handleAccountCreate}
         >
           <CustomInput
             label={"Name"}

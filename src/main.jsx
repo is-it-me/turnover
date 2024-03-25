@@ -1,13 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App.jsx";
+import LoginContextProvider from "./context/LoginContextProvider.jsx";
+// const defaultState = {
+//   isLogin: false,
+// };
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// export const Context = createContext(null);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <LoginContextProvider>
+        <App />
+      </LoginContextProvider>
     </BrowserRouter>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
